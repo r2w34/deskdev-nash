@@ -31,8 +31,10 @@ This guide will help you deploy OpenHands (formerly OpenDevin) on your server us
 
 ### 3. Build Configuration
 
-- **Build Type**: `Static`
-- **Configuration File**: `dokploy.yaml` (uses the built-in static deployment configuration)
+- **Build Type**: `Dockerfile`
+- **Docker File**: `Dockerfile` (uses a simple nginx-based static hosting)
+- **Docker Context Path**: `.` (current directory)
+- **Docker Build Stage**: Leave empty (no specific stage needed)
 
 ### 4. Environment Variables
 
@@ -63,7 +65,7 @@ WORKSPACE_MOUNT_PATH=/opt/workspace_base
 
 ### 5. Port Configuration
 
-- **Container Port**: `3000`
+- **Container Port**: `80`
 - **Host Port**: `3000` (or any available port on your server)
 
 ### 6. Volume Mounts (Optional)
@@ -82,9 +84,9 @@ Note: The simplified Dockerfile.dokploy doesn't require Docker-in-Docker functio
 1. **Create New Application** in Dokploy
 2. **Select "GitHub"** as the source
 3. **Configure Repository** settings as described above
-4. **Set Build Type** to "Static"
+4. **Set Build Type** to "Dockerfile"
 5. **Add Environment Variables** as listed above
-6. **Configure Port Mapping** (3000:3000)
+6. **Configure Port Mapping** (80:3000)
 7. **Add Volume Mounts** if needed
 8. **Deploy** the application
 
