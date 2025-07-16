@@ -6,7 +6,7 @@ This guide will help you deploy OpenHands (formerly OpenDevin) on your server us
 
 - A server with Dokploy installed
 - At least 4GB RAM and 2+ CPU cores (recommended for builders)
-- Docker installed on your server
+- No Docker installation required
 - GitHub repository access
 
 ## Dokploy Configuration
@@ -31,10 +31,8 @@ This guide will help you deploy OpenHands (formerly OpenDevin) on your server us
 
 ### 3. Build Configuration
 
-- **Build Type**: `Dockerfile`
-- **Docker File**: `Dockerfile.dokploy` (the simplified Dockerfile for Dokploy)
-- **Docker Context Path**: `.` (current directory)
-- **Docker Build Stage**: Leave empty (no specific stage needed)
+- **Build Type**: `Static`
+- **Configuration File**: `dokploy.yaml` (uses the built-in static deployment configuration)
 
 ### 4. Environment Variables
 
@@ -84,7 +82,7 @@ Note: The simplified Dockerfile.dokploy doesn't require Docker-in-Docker functio
 1. **Create New Application** in Dokploy
 2. **Select "GitHub"** as the source
 3. **Configure Repository** settings as described above
-4. **Set Build Type** to "Dockerfile"
+4. **Set Build Type** to "Static"
 5. **Add Environment Variables** as listed above
 6. **Configure Port Mapping** (3000:3000)
 7. **Add Volume Mounts** if needed
@@ -108,9 +106,9 @@ curl http://your-server-ip:3000/health
 
 ### Logs
 
-Monitor the application logs through Dokploy's interface or via Docker:
+Monitor the application logs through Dokploy's interface:
 ```bash
-docker logs <container-name>
+# View logs in Dokploy dashboard
 ```
 
 ## Troubleshooting
